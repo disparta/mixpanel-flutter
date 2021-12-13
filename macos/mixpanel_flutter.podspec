@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.source_files = 'Classes/**/*'
 
   s.dependency 'FlutterMacOS'
-  s.dependency 'Mixpanel-swift', '2.10.2'
+  s.dependency 'Mixpanel-swift', '3.0.0.beta.5'
 
   s.platform = :osx, '10.11'
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }

@@ -27,4 +27,3 @@ flutter:
       macos:
         pluginClass: SwiftMixpanelFlutterPlugin
 
-#flutter create . --org com.mixpanel --template=plugin --platforms=macos -i swift MixpanelFlutterPlugin

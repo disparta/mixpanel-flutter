@@ -1,25 +1,25 @@
 import Cocoa
 import FlutterMacOS
 import Mixpanel
+import os
 
 public class SwiftMixpanelFlutterPlugin: NSObject, FlutterPlugin {
     
     private var instance: MixpanelInstance?
     var token: String?
     var mixpanelProperties: [String: String]?
-    
-    //public static func register(with registrar: FlutterPluginRegistrar) {
-    //    let channel = FlutterMethodChannel(name: "mixpanel_flutter", binaryMessenger: registrar.messenger())
-    //    let instance = SwiftMixpanelFlutterPlugin()
-    //    registrar.addMethodCallDelegate(instance, channel: channel)
-    //}
+    private var registrar: FlutterPluginRegistrar
 
     public static func register(with registrar: FlutterPluginRegistrar) {
         let channel = FlutterMethodChannel(name: "mixpanel_flutter", binaryMessenger: registrar.messenger)
-        let instance = SwiftMixpanelFlutterPlugin()
+        let instance = SwiftMixpanelFlutterPlugin(registrar: registrar)
         registrar.addMethodCallDelegate(instance, channel: channel)
       }
-    
+
+    init(registrar: FlutterPluginRegistrar) {
+        self.registrar = registrar
+    }
+
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
         case "initialize":
